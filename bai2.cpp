@@ -1,42 +1,43 @@
 #include<stdio.h>
 #include<math.h>
 //
-int Dem(unsigned long long n);
-bool KiemTra(unsigned long long n,int k);
-
+int Demtungso(unsigned long long at );
+bool Kiemtraat(unsigned long long at, int k);
 //
+
 int main()
 {
+    printf("tong cac so Amstrong = ");
     int k=1;
-    unsigned long long n=1;
-    while(k*pow(9,k)>=pow(10,k-1))
+    unsigned long long at = 1;
+    while(/*k*int(pow(9,k))>=int(pow(9,k-1))*/at<=100000000)
     {
-        if(KiemTra(n,k)) 
+        k= Demtungso(at);
+        if(Kiemtraat(at,k))
         {
-            printf("%d ",n);
+            printf("%lld ",at);
         }
-        n++;
-        k=Dem(n);
+        at++;
     }
 }
-int Dem(unsigned long long n)
+int Demtungso(unsigned long long at )
 {
     int count=0;
-    while(n>0)
+    while( at > 0)
     {
-        n=n/10;
+        at=at/10;
         count++;
     }
     return count;
 }
-bool KiemTra(unsigned long long n,int k)
+bool Kiemtraat(unsigned long long at, int k)
 {
-    unsigned long long temp=n;
-    unsigned long long S=0;
-    while(n>0)
+    unsigned long long S = 0;
+    unsigned long long temp= at ;
+    while(at>0)
     {
-       S=S+pow((n%10),k); 
-       n=n/10;
+        S=S+pow(at%10,k);
+        at=at/10;      
     }
     return temp==S;
 }
